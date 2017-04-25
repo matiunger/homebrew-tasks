@@ -1,0 +1,25 @@
+{
+  "name": "homebrew-tasks",
+  "version": "1.0.0",
+  "description": "Simple Homebrew Tassk guide",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mathias Unger",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2",
+    "materialize-css": "^0.98.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.3.0",
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^6.4.0",
+    "gulp-sass": "^3.1.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
