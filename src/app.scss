@@ -4,3 +4,21 @@ main {
 	padding: 0;
 	margin: 0;
 }
+
+#app {
+	/*width: auto;
+	max-width: 800px;
+	margin: 0 auto;*/
+	height: 80vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	#startform {
+		p {
+			text-align: center;
+		}
+	}
+	.card-panel {
+		display: block;
+	}
+}

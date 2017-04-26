@@ -36,8 +36,8 @@ gulp.task('scripts', function() {
 
 // Watch changes
 gulp.task('watch', function(){
-	gulp.watch('./src/**/*.{scss,css,js}', ['css', 'files','scripts'])
+	gulp.watch('./src/**/*.{scss,css,js,html}', ['css', 'files','scripts'])
 })
 
 // Default Tasks
-gulp.task('default', ['css','files','scripts'])
+gulp.task('default', ['css','files','scripts','watch'])

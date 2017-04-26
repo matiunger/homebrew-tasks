@@ -6812,3 +6812,19 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 main {
   padding: 0;
   margin: 0; }
+
+#app {
+  /*width: auto;
+	max-width: 800px;
+	margin: 0 auto;*/
+  height: 80vh;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center; }
+  #app #startform p {
+    text-align: center; }
+  #app .card-panel {
+    display: block; }

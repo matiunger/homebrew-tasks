@@ -5,32 +5,35 @@
 	<title>Munger's Homebrew Tasks</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="app.css">
-	<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+	 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<script type="text/javascript" src="index.js"></script>
 </head>
 <body>
 	<main>
-		<header>
-			<div id="Header-Timer"></div>
-			<div id="Header-StartTime"></div>
-			<div id="Header-CompletedTasks"></div>
-		</header>
+		<nav>
+					<div class="nav-wrapper">
+						<ul id="nav-mobile" class="left">
+							<li><a href="#">01:23:34</a></li>
+							<li><a href="#">2/35</a></li>
+						</ul>
+					</div>
+					<div id="Header-Timer"></div>
+					<div id="Header-StartTime"></div>
+					<div id="Header-CompletedTasks"></div>
+				</nav>
 		<section id="app">
-		<main>
-			<form action="#">
+			<form id="startform" action="#">
 				<p>
-					<input name="group1" type="radio" id="test1" />
-					<label for="test1">Simple batch</label>
+					<input name="brewtype" type="radio" id="test1" value="simple" checked />
+					<label for="test1">Simple Batch</label>
 				</p>
 				<p>
-					<input name="group1" type="radio" id="test2" />
-					<label for="test2">Doble Batch</label>
-
+					<input name="brewtype" type="radio" value="double" id="test2" />
+					<label for="test2">Double Batch</label>
 				</p>
-				<p><a class="waves-effect waves-light btn">Start</a></p>
+				<p><a id="btn_start" class="waves-effect waves-light btn">Start</a></p>
 			</form>
-			
-		</main>
 		</section>
 	</main>
 </body>
