@@ -4,15 +4,49 @@ let brewtype = "simple";
 let task = 0;
 const nstasks = 4; // Number of tasks to be shown previuos and after current task (>2)
 const b_simple = [
-	"Calentar agua",
-	"Poner Malta",
-	"Verificar temperatura",
-	"Macerar",
-	"Filtrar",
-	"Hervir",
-	"Enfriar",
-	"Levadura",
-	"Limpiar"
+	"Revisar volumenes de agua en tabla"
+	"Poner a calentar agua",
+	"Agregar sales",
+	"Preparar olla de macerado, con manguera para llenar por abajo",
+	"Medir maltas y preparar en balde o bolsas",
+	"Precalentar un poco la olla de macerado",
+	"Preparar termometro",
+	"Mash in",
+	"Tomar muestra y medir PH",
+	"agregar acido y tomar otra muestra",
+	"Dejar todo tapado",
+	"Poner a calentar agua para strike o lavado",
+	"Agregar sales al agua de lavado",
+	"Lavar y prepara bomba",
+	"Preparar objetos para recircular",
+	"Hervir agua y llenar erlenmayers",
+	"Hacer Segundo Step si indica la receta",
+	"Preparar olla de hervido y manguera de conexion con Klammern",
+	"Recircular",
+	"Empezar lavado",
+	"Calentar olla de hervido",
+	"Cuando se acaba el agua, subir ollas",
+	"LLevar bagazo al compost",
+	"Revolver constantemente",
+	"Lavar olla de macerado",
+	"Preparar lupulos en vasos",
+	"Preparar irish moss",
+	"Preparar timer para lupulos",
+	"Medir volumen y densidad prehervor",
+	"Empieza a hervir, activar timer",
+	"Lavar espiral y conectar manguera, checkear perdidas",
+	"Lavar y sanitizar fermentadores",
+	"Terminar de hervir y meter espiral, checkear con Klammern"
+	"Check volumen y densidad",
+	"Agregar agua si hace falta",
+	"Preparar levaduras",
+	"Llenar fermentador e inocular levadura",
+	"Poner en freezer con sensor sanitizado y ajustar temperatura",
+	"Lavar espiral",
+	"Lavar olla de hervido",
+	"Ordenar todo",
+	"Checkear tabla, anotar datos que falten"
+
 ];
 let status = [];
 // timer
