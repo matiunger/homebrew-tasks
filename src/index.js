@@ -4,7 +4,7 @@ let brewtype = "simple";
 let task = 0;
 const nstasks = 4; // Number of tasks to be shown previuos and after current task (>2)
 const b_simple = [
-	"Revisar volumenes de agua en tabla"
+	"Revisar volumenes de agua en tabla",
 	"Poner a calentar agua",
 	"Agregar sales",
 	"Preparar olla de macerado, con manguera para llenar por abajo",
@@ -36,7 +36,7 @@ const b_simple = [
 	"Empieza a hervir, activar timer",
 	"Lavar espiral y conectar manguera, checkear perdidas",
 	"Lavar y sanitizar fermentadores",
-	"Terminar de hervir y meter espiral, checkear con Klammern"
+	"Terminar de hervir y meter espiral, checkear con Klammern",
 	"Check volumen y densidad",
 	"Agregar agua si hace falta",
 	"Preparar levaduras",
