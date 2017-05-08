@@ -5,6 +5,8 @@ let task = 0;
 const nstasks = 4; // Number of tasks to be shown previuos and after current task (>2)
 const b_simple = [
 	"Revisar volumenes de agua en tabla",
+	"Filtrar agua",
+	"Preparar lugar de trabajo",
 	"Poner a calentar agua",
 	"Agregar sales",
 	"Preparar olla de macerado, con manguera para llenar por abajo",
@@ -35,8 +37,9 @@ const b_simple = [
 	"Medir volumen y densidad prehervor",
 	"Empieza a hervir, activar timer",
 	"Lavar espiral y conectar manguera, checkear perdidas",
+	"Terminar de hervir y Whirpool",
 	"Lavar y sanitizar fermentadores",
-	"Terminar de hervir y meter espiral, checkear con Klammern",
+	"Meter enfriador, checkear con Klammern",
 	"Check volumen y densidad",
 	"Agregar agua si hace falta",
 	"Preparar levaduras",
@@ -46,7 +49,6 @@ const b_simple = [
 	"Lavar olla de hervido",
 	"Ordenar todo",
 	"Checkear tabla, anotar datos que falten"
-
 ];
 let status = [];
 // timer
@@ -106,8 +108,8 @@ function loadapp(tasks) {
     	}
     	e.preventDefault(); // prevent the default action (scroll / move caret)
 	});
-	var currentdate = new Date(); 
-	var starttime = addZero(currentdate.getHours()) + ":"  + addZero(currentdate.getMinutes()) + " Hs";
+	const currentdate = new Date(); 
+	const starttime = addZero(currentdate.getHours()) + ":"  + addZero(currentdate.getMinutes()) + " Hs";
 	$("#Header-StartTime a span").html(starttime);
 	timer();
 }
@@ -118,15 +120,17 @@ function tooglecheck (tasks) {
 if (status[task] == true) {
 			status[task] = false;
 			$("#btn_check").removeClass("green").addClass("grey");
+			$("h5").css({'text-decoration':'none'});
 		} else {
 			status[task] = true;
 			$("#btn_check").removeClass("grey").addClass("green");
+			$("h5").css({'text-decoration':'line-through'});
 		}
 		renderCompletedTasks(tasks)
 
 }
 function renderCompletedTasks(tasks) {
-	var sum = status.reduce((a, b) => a + b, 0);
+	let sum = status.reduce((a, b) => a + b, 0);
 	$("#Header-CompletedTasks a span").html(sum+"/"+tasks.length);
 	if (sum == tasks.length) {
 		clearTimeout(t);
@@ -139,20 +143,27 @@ function render(tasks) {
 
 	const fmin = 13;
 	const fmax = 26;
-
-	for (var i = task - nstasks; i < task; i++) {
+	let color;
+	let stxt;
+	for (let i = task - nstasks; i < task; i++) {
 		if (i >= 0) {
-			var f = fmin + (i-task+nstasks)*(fmax-fmin)/(nstasks-1);
+			let f = fmin + (i-task+nstasks)*(fmax-fmin)/(nstasks-1);
 			if (status[i] == true) { var tc = "line-through"} else {var tc = "none"}
 			$('#app .row').append("<div class='col s12 center-align' style='font-size: "+f+"px; text-decoration: "+tc+"'>"+tasks[i]+"</div>")
 		}
 	}
-	if (status[task] == true) { var color = "green"} else {var color = "grey"}
-	$('#app .row').append("<div class='col s12 center-align'><div class='card-panel'><h5 class='blue-text text-darken-2' >"+tasks[task]+"</h5><a id='btn_check' class='btn-floating horizontal waves-effect waves-light "+color+"'><i class='material-icons'>done</i></a></div></div>")
+	if (status[task] == true) {
+		color = "green";
+		stxt = "text-decoration: line-through";
+	} else {
+		color = "grey";
+		stxt = "text-decoration: none";
+	}
+	$('#app .row').append("<div class='col s12 center-align'><div class='card-panel'><h5 class='blue-text text-darken-2' style='"+stxt+"' >"+tasks[task]+"</h5><a id='btn_check' class='btn-floating horizontal waves-effect waves-light "+color+"'><i class='material-icons'>done</i></a></div></div>")
 	clickcheck(tasks);
-	for (var i = task + 1; i < task + nstasks + 1; i++) {
+	for (let i = task + 1; i < task + nstasks + 1; i++) {
 		if (i <= tasks.length-1) {
-			var f = fmax - (i-task-1)*(fmax-fmin)/(nstasks-1);
+			let f = fmax - (i-task-1)*(fmax-fmin)/(nstasks-1);
 			if (status[i] == true) { var tc = "line-through"} else {var tc = "none"}
 			$('#app .row').append("<div class='col s12 center-align' style='font-size: "+f+"px; text-decoration: "+tc+"'>"+tasks[i]+"</div>")
 		}

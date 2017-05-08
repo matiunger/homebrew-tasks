@@ -10261,7 +10261,7 @@ var $ = require("jquery");
 var brewtype = "simple";
 var task = 0;
 var nstasks = 4; // Number of tasks to be shown previuos and after current task (>2)
-var b_simple = ["Revisar volumenes de agua en tabla", "Poner a calentar agua", "Agregar sales", "Preparar olla de macerado, con manguera para llenar por abajo", "Medir maltas y preparar en balde o bolsas", "Precalentar un poco la olla de macerado", "Preparar termometro", "Mash in", "Tomar muestra y medir PH", "agregar acido y tomar otra muestra", "Dejar todo tapado", "Poner a calentar agua para strike o lavado", "Agregar sales al agua de lavado", "Lavar y prepara bomba", "Preparar objetos para recircular", "Hervir agua y llenar erlenmayers", "Hacer Segundo Step si indica la receta", "Preparar olla de hervido y manguera de conexion con Klammern", "Recircular", "Empezar lavado", "Calentar olla de hervido", "Cuando se acaba el agua, subir ollas", "LLevar bagazo al compost", "Revolver constantemente", "Lavar olla de macerado", "Preparar lupulos en vasos", "Preparar irish moss", "Preparar timer para lupulos", "Medir volumen y densidad prehervor", "Empieza a hervir, activar timer", "Lavar espiral y conectar manguera, checkear perdidas", "Lavar y sanitizar fermentadores", "Terminar de hervir y meter espiral, checkear con Klammern", "Check volumen y densidad", "Agregar agua si hace falta", "Preparar levaduras", "Llenar fermentador e inocular levadura", "Poner en freezer con sensor sanitizado y ajustar temperatura", "Lavar espiral", "Lavar olla de hervido", "Ordenar todo", "Checkear tabla, anotar datos que falten"];
+var b_simple = ["Revisar volumenes de agua en tabla", "Filtrar agua", "Preparar lugar de trabajo", "Poner a calentar agua", "Agregar sales", "Preparar olla de macerado, con manguera para llenar por abajo", "Medir maltas y preparar en balde o bolsas", "Precalentar un poco la olla de macerado", "Preparar termometro", "Mash in", "Tomar muestra y medir PH", "agregar acido y tomar otra muestra", "Dejar todo tapado", "Poner a calentar agua para strike o lavado", "Agregar sales al agua de lavado", "Lavar y prepara bomba", "Preparar objetos para recircular", "Hervir agua y llenar erlenmayers", "Hacer Segundo Step si indica la receta", "Preparar olla de hervido y manguera de conexion con Klammern", "Recircular", "Empezar lavado", "Calentar olla de hervido", "Cuando se acaba el agua, subir ollas", "LLevar bagazo al compost", "Revolver constantemente", "Lavar olla de macerado", "Preparar lupulos en vasos", "Preparar irish moss", "Preparar timer para lupulos", "Medir volumen y densidad prehervor", "Empieza a hervir, activar timer", "Lavar espiral y conectar manguera, checkear perdidas", "Terminar de hervir y Whirpool", "Lavar y sanitizar fermentadores", "Meter enfriador, checkear con Klammern", "Check volumen y densidad", "Agregar agua si hace falta", "Preparar levaduras", "Llenar fermentador e inocular levadura", "Poner en freezer con sensor sanitizado y ajustar temperatura", "Lavar espiral", "Lavar olla de hervido", "Ordenar todo", "Checkear tabla, anotar datos que falten"];
 var status = [];
 // timer
 var t = void 0;
@@ -10348,9 +10348,11 @@ function tooglecheck(tasks) {
 	if (status[task] == true) {
 		status[task] = false;
 		$("#btn_check").removeClass("green").addClass("grey");
+		$("h5").css({ 'text-decoration': 'none' });
 	} else {
 		status[task] = true;
 		$("#btn_check").removeClass("grey").addClass("green");
+		$("h5").css({ 'text-decoration': 'line-through' });
 	}
 	renderCompletedTasks(tasks);
 }
@@ -10370,7 +10372,8 @@ function render(tasks) {
 
 	var fmin = 13;
 	var fmax = 26;
-
+	var color = void 0;
+	var stxt = void 0;
 	for (var i = task - nstasks; i < task; i++) {
 		if (i >= 0) {
 			var f = fmin + (i - task + nstasks) * (fmax - fmin) / (nstasks - 1);
@@ -10383,21 +10386,23 @@ function render(tasks) {
 		}
 	}
 	if (status[task] == true) {
-		var color = "green";
+		color = "green";
+		stxt = "text-decoration: line-through";
 	} else {
-		var color = "grey";
+		color = "grey";
+		stxt = "text-decoration: none";
 	}
-	$('#app .row').append("<div class='col s12 center-align'><div class='card-panel'><h5 class='blue-text text-darken-2' >" + tasks[task] + "</h5><a id='btn_check' class='btn-floating horizontal waves-effect waves-light " + color + "'><i class='material-icons'>done</i></a></div></div>");
+	$('#app .row').append("<div class='col s12 center-align'><div class='card-panel'><h5 class='blue-text text-darken-2' style='" + stxt + "' >" + tasks[task] + "</h5><a id='btn_check' class='btn-floating horizontal waves-effect waves-light " + color + "'><i class='material-icons'>done</i></a></div></div>");
 	clickcheck(tasks);
-	for (var i = task + 1; i < task + nstasks + 1; i++) {
-		if (i <= tasks.length - 1) {
-			var f = fmax - (i - task - 1) * (fmax - fmin) / (nstasks - 1);
-			if (status[i] == true) {
+	for (var _i = task + 1; _i < task + nstasks + 1; _i++) {
+		if (_i <= tasks.length - 1) {
+			var _f = fmax - (_i - task - 1) * (fmax - fmin) / (nstasks - 1);
+			if (status[_i] == true) {
 				var tc = "line-through";
 			} else {
 				var tc = "none";
 			}
-			$('#app .row').append("<div class='col s12 center-align' style='font-size: " + f + "px; text-decoration: " + tc + "'>" + tasks[i] + "</div>");
+			$('#app .row').append("<div class='col s12 center-align' style='font-size: " + _f + "px; text-decoration: " + tc + "'>" + tasks[_i] + "</div>");
 		}
 	}
 	renderCompletedTasks(tasks);
