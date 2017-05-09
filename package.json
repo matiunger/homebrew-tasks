@@ -1,7 +1,7 @@
 {
-  "name": "homebrew-tasks",
+  "name": "Secuencial Tasks Tracker",
   "version": "1.0.0",
-  "description": "Simple Homebrew Tassk guide",
+  "description": "This webapp helps keeping track and time multiple secuencial tasks. For example in following steps in homebrewing",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
